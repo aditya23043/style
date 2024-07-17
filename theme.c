@@ -3,43 +3,6 @@
 #include <string.h>
 #include <regex.h>
 
-/*
- * String methods
- * strlen : length of the string
- * strcat : concatenate first str with the second one onto the first string
- * strcmp : returns 0 if both the arg strings are same
- */
-
-/*
- * Char method from <ctype.h>
- * isalnum : alphanumeric
- * isalpha : alphabetic
- * iscntrl : control character
- * isdigit : digit
- * islower : lowercase
- * isgraph : graphical
- * isprint : printing
- * ispunct : punctuation
- * isspace : space char
- * isupper : uppercase
- * isxdigit: hexadecimal numeric
- *
- * tolower : converts to lowercase
- * toupper : converts to uppercase
- */
-
-/*
- * Stuff to change:
- * 1. neovim
- * 2. dwm
- * 3. st
- * 4. dmenu
- * 5. dunst
- * 6. GTK
- * 7. keyboard color (optional)
- * 8. wallpaper
- */
-
 struct _palette {
 
 	char* bg;
@@ -83,7 +46,7 @@ int main(){
 		case 2:
 			// Gruvbox Light
 			palette.fg = "#654735";
-			palette.suggestion = "#e0c685";
+			palette.suggestion = "#dfcd9f";
 			palette.bg = "#ebdbb2";
 			palette.black = "#282828";
 			palette.red = "#c14a4a";
@@ -111,7 +74,7 @@ int main(){
 		case 4:
 			// Solarized Light
 			palette.fg = "#002b36";
-			palette.suggestion = "#fae8b7";
+			palette.suggestion = "#e4decd";
 			palette.bg = "#fdf6e3";
 			palette.black = "#282828";
 			palette.red = "#dc322f";
