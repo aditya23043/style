@@ -5,6 +5,7 @@
 
 struct _palette {
 
+
 	char* bg;
 	char* fg;
 	char* suggestion;
@@ -21,10 +22,32 @@ struct _palette {
 
 int main(){
 
+	// ----------------------------------------------------------------DEFINING STUFF----------------------------------------------------------------
+
+	char *st_conf_filename = "/home/adi/.config/st/config.h";
+	char *fish_conf_filename = "/home/adi/.config/fish/config.fish";
+	char *temp_filename = "temp.h";
+
+	const int LINE_SIZE = 512;
+
+	char init_line[LINE_SIZE];
+	char final_line[LINE_SIZE];
+
+	regex_t regex;
+	int regex_value;
+
+	FILE *st_conf_file;
+	FILE *fish_conf_file;
+	FILE *temp_file;
+
+	// ----------------------------------------------------------------INPUT PROMPT-----------------------------------------------------------------
+
 	printf("\nTHEMES\n\n  1. Gruvbox Dark\n  2. Gruvbox Light\n  3. Solarized Dark\n  4. Solarized Light\n  5. Onedark Dark\n  6. Tokyonight Dark\n\n");
 	printf("Choose a theme: ");
 	int choice;
 	scanf("%d", &choice);
+
+	// ----------------------------------------------------------------SETTING PALETTE--------------------------------------------------------------
 
 	struct _palette palette;
 
@@ -118,99 +141,127 @@ int main(){
 			printf("\nPick your theme from the following:\n\n  Gruvbox Light\n  Gruvbox Dark\n  Solarized Dark\n  Solarized Light\n");
 			return 1;
 	}
+	
+	// ----------------------------------------------------------------BACKEND----------------------------------------------------------------
 
-	regex_t theme_regex;
-	int theme_regex_value;
+	regex_value = regcomp(&regex, "static const char .colorname", 0);
 
-	char finalString[100000] = "";
+	st_conf_file = fopen(st_conf_filename, "r");
+	temp_file = fopen(temp_filename, "w");
 
-	theme_regex_value = regcomp(&theme_regex, "static const char .colorname", 0);
+	while( fgets(init_line, LINE_SIZE, st_conf_file) ){
+		regex_value = regexec(&regex, init_line, 0, NULL, 0);
 
-	char string[512];
-	FILE *foo = fopen("/home/adi/.config/st/config.h", "r");
-
-	while(fgets(string, 512, foo) != NULL){
-
-		theme_regex_value = regexec(&theme_regex, string, 0,  NULL, 0);
-
-		if (theme_regex_value == 0){
-			strcat(finalString, "static const char *colorname[] = { \"");
-			strcat(finalString, palette.black);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.red);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.green);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.yellow);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.blue);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.magenta);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.cyan);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.white);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.black);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.red);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.green);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.yellow);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.blue);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.magenta);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.cyan);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.white);
-			strcat(finalString, "\", ");
-			strcat(finalString, "[255] = 0, \"");
-			strcat(finalString, palette.fg);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.bg);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.fg);
-			strcat(finalString, "\", \"");
-			strcat(finalString, palette.bg);
-			strcat(finalString, "\" };\n");
-		} else{
-			strcat(finalString, string);
+		if (regex_value == 0){
+			strncpy(final_line, "static const char *colorname[] = { \"", sizeof("static const char *colorname[] = { \""));
+			strncat(final_line, palette.black, sizeof(palette.black));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.red, sizeof(palette.red));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.green, sizeof(palette.green));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.yellow, sizeof(palette.yellow));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.blue, sizeof(palette.blue));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.magenta, sizeof(palette.magenta));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.cyan, sizeof(palette.cyan));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.white, sizeof(palette.white));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.black, sizeof(palette.black));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.red, sizeof(palette.red));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.green, sizeof(palette.green));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.yellow, sizeof(palette.yellow));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.blue, sizeof(palette.blue));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.magenta, sizeof(palette.magenta));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.cyan, sizeof(palette.cyan));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.white, sizeof(palette.white));
+			strncat(final_line, "\", ", sizeof("\", "));
+			strncat(final_line, "[255] = 0, \"", sizeof("[255] = 0, \""));
+			strncat(final_line, palette.fg, sizeof(palette.fg));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.bg, sizeof(palette.bg));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.fg, sizeof(palette.fg));
+			strncat(final_line, "\", \"", sizeof("\", \""));
+			strncat(final_line, palette.bg, sizeof(palette.bg));
+			strncat(final_line, "\" };\n", sizeof("\" };\n"));
+		} else {
+			strncpy(final_line, init_line, sizeof(init_line));
 		}
 
+		fprintf(temp_file, "%s", final_line);
 	}
 
-	fclose(foo);
+	fclose(temp_file);
+	fclose(st_conf_file);
 
-	foo = fopen("/home/adi/.config/st/config.h", "w");
-	fprintf(foo, "%s", finalString);
-	fclose(foo);
+	// ----------------------------------------------------------------TEMP -> FINAL----------------------------------------------------------------
 
-	// FISH AUTOSUGGESTION COLOR
-	strcpy(finalString, "");
-	regex_t fish_color_regex;
-	int fish_color_regex_value = regcomp(&fish_color_regex, "set -U fish_color_autosuggestion", 0);
+	st_conf_file = fopen(st_conf_filename, "w");
+	temp_file = fopen(temp_filename, "r");
 
-	foo = fopen("/home/adi/.config/fish/config.fish", "r");
-	while(fgets(string, 512, foo) != NULL){
-		fish_color_regex_value = regexec(&fish_color_regex, string, 0,  NULL, 0);
-		if (fish_color_regex_value == 0){
-			strcat(finalString, "set -U fish_color_autosuggestion \"");
-			strcat(finalString, palette.suggestion);
-			strcat(finalString, "\"");
-		} else{
-			strcat(finalString, string);
+	while( fgets(init_line, LINE_SIZE, temp_file) ){
+		fprintf(st_conf_file, "%s", init_line);
+	}
+
+	fclose(temp_file);
+	fclose(st_conf_file);
+
+	// ----------------------------------------------------------------FISH AUTOSUGGESTION COLOR----------------------------------------------------
+
+	regex_value = regcomp(&regex, "set -U fish_color_autosuggestion", 0);
+
+	fish_conf_file = fopen(fish_conf_filename, "r");
+	temp_file = fopen(temp_filename, "w");
+
+	while( fgets(init_line, LINE_SIZE, fish_conf_file) ){
+		regex_value = regexec(&regex, init_line, 0,  NULL, 0);
+
+		if (regex_value == 0){
+			strncpy(final_line, "set -U fish_color_autosuggestion \"", sizeof("set -U fish_color_autosuggestion \""));
+			strncat(final_line, palette.suggestion, sizeof(palette.suggestion));
+			strncat(final_line, "\"", sizeof("\""));
+		} else {
+			strncpy(final_line, init_line, sizeof(init_line));
 		}
+		
+		fprintf(temp_file, "%s", final_line);
 	}
-	fclose(foo);
 
-	foo = fopen("/home/adi/.config/fish/config.fish", "w");
-	fprintf(foo, "%s", finalString);
-	fclose(foo);
+	fclose(temp_file);
+	fclose(fish_conf_file);
+
+	// ----------------------------------------------------------------TEMP -> FINAL----------------------------------------------------
+
+	fish_conf_file = fopen(fish_conf_filename, "w");
+	temp_file = fopen(temp_filename, "r");
+
+	while( fgets(init_line, LINE_SIZE, temp_file) ){
+		fprintf(fish_conf_file, "%s", init_line);
+	}
+
+	fclose(temp_file);
+	fclose(fish_conf_file);
+
+	// ----------------------------------------------------------------CLEANUP & MAKE----------------------------------------------------
 
 	system("cd /home/adi/.config/st && sudo make clean install && cd");
+
+	if (remove(temp_filename) == 0){
+		printf("\nRemoved temporary file successfully\n");
+	} else {
+		printf("\nUnable to delete temporary file\n");
+	}
 
 	return 0;
 }
