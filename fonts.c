@@ -6,7 +6,7 @@
 int main(int argc, char *argv[])
 {
 
-	printf("\nFONTS:\n    1. Victor\n    2. JetBrains\n    3. Iosevka\n    4. Pragmasevka\n    5. Blex\n    6. IBM Plex\n    7. Lekton\n    8. Nanum Gothic Coding\n\nEnter: ");
+	printf("\nFONTS:\n    1. Victor\n    2. JetBrains\n    3. Iosevka\n    4. Pragmasevka\n    5. Blex\n    6. IBM Plex\n    7. Lekton\n    8. Nanum Gothic Coding\n    9. Ubuntu\n    10. Iosevka SS14\n    11. Fira Code\n    12. Sarasa Gothic\n    13. Recursive Mono\n\nEnter: ");
 	int choice;
 	scanf("%d", &choice);
 
@@ -33,15 +33,15 @@ int main(int argc, char *argv[])
 
 		case 3:
 			fontFamily = "Iosevka NFM";
-			fontStyle = "Bold";
-			fontSize = "20";
-			fontSpacing = "0.9";
+			fontStyle = "Regular";
+			fontSize = "26";
+			fontSpacing = "1.0";
 			break;
 
 		case 4:
 			fontFamily = "Pragmasevka Nerd Font:";
-			fontStyle = "Bold";
-			fontSize = "18";
+			fontStyle = "Regular";
+			fontSize = "24";
 			fontSpacing = "0.9";
 			break;
 
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
 		case 7:
 			fontFamily = "Lekton Nerd Font Mono";
 			fontStyle = "Bold";
-			fontSize = "18";
+			fontSize = "21";
 			fontSpacing = "0.9";
 			break;
 
@@ -73,8 +73,43 @@ int main(int argc, char *argv[])
 			fontSpacing = "1.0";
 			break;
 
+		case 9:
+			fontFamily = "Ubuntu Mono";
+			fontStyle = "Bold";
+			fontSize = "21";
+			fontSpacing = "0.95";
+			break;
+
+		case 10:
+			fontFamily = "Iosevka Term SS14";
+			fontStyle = "Regular";
+			fontSize = "26";
+			fontSpacing = "1.0";
+			break;
+
+		case 11:
+			fontFamily = "Fira Code";
+			fontStyle = "Medium";
+			fontSize = "20";
+			fontSpacing = "0.9";
+			break;
+
+		case 12:
+			fontFamily = "Sarasa Mono CL";
+			fontStyle = "Regular";
+			fontSize = "24";
+			fontSpacing = "1.0";
+			break;
+
+		case 13:
+			fontFamily = "RecMonoLinear Nerd Font Mono";
+			fontStyle = "Regular";
+			fontSize = "18";
+			fontSpacing = "0.9";
+			break;
+
 		default:
-			printf("Invalid option! Try Again!");
+			printf("Invalid option! Try Again!\n");
 			return 1;
 	}
 

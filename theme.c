@@ -42,7 +42,7 @@ int main(){
 
 	// ----------------------------------------------------------------INPUT PROMPT-----------------------------------------------------------------
 
-	printf("\nTHEMES\n\n  1. Gruvbox Dark\n  2. Gruvbox Light\n  3. Solarized Dark\n  4. Solarized Light\n  5. Onedark Dark\n  6. Tokyonight Dark\n\n");
+	printf("\nTHEMES\n\n  1. Gruvbox Dark\n  2. Gruvbox Light\n  3. Solarized Dark\n  4. Solarized Light\n  5. Onedark Dark\n  6. Tokyonight Dark\n  7. CUSTOM\n\n");
 	printf("Choose a theme: ");
 	int choice;
 	scanf("%d", &choice);
@@ -82,7 +82,7 @@ int main(){
 			break;
 		case 3:
 			// Solarized Dark
-			palette.fg = "#fdf6e3";
+			palette.fg = "#839496";
 			palette.suggestion = "#003d4d";
 			palette.bg = "#002b36";
 			palette.black = "#282828";
@@ -135,6 +135,21 @@ int main(){
 	        palette.magenta = "#bb9af7";
 	        palette.cyan = "#7dcfff";
 	        palette.white = "#cbd0e6";
+			break;
+		case 7:
+			// CUSTOM
+			palette.fg = "#cdd6f4";
+			palette.suggestion = "#1f1f1f";
+			palette.bg = "#0a0a0a";
+	        palette.black = "#2a2c3c";
+	        palette.red = "#f7768e";
+	        palette.green = "#9ece6a";
+	        palette.yellow = "#e0af68";
+	        palette.blue = "#7aa2f7";
+	        palette.magenta = "#bb9af7";
+			// palette.cyan = "#99f6e4";  
+	        palette.cyan = "#7dcfff";
+			palette.white = "#cdd6f4";  
 			break;
 
 		default:
