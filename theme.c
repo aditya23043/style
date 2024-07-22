@@ -5,7 +5,8 @@
 
 struct _palette {
 
-
+	char nvim_colorscheme[256];
+	char* nvim_background;
 	char* bg;
 	char* fg;
 	char* suggestion;
@@ -26,6 +27,7 @@ int main(){
 
 	char *st_conf_filename = "/home/adi/.config/st/config.h";
 	char *fish_conf_filename = "/home/adi/.config/fish/config.fish";
+	char *nvim_conf_filename = "/home/adi/.config/nvim/init.lua";
 	char *temp_filename = "temp.h";
 
 	const int LINE_SIZE = 512;
@@ -36,8 +38,12 @@ int main(){
 	regex_t regex;
 	int regex_value;
 
+	regex_t regex_2;
+	int regex_2_value;
+
 	FILE *st_conf_file;
 	FILE *fish_conf_file;
+	FILE *nvim_conf_file;
 	FILE *temp_file;
 
 	// ----------------------------------------------------------------INPUT PROMPT-----------------------------------------------------------------
@@ -54,6 +60,8 @@ int main(){
 	switch(choice){
 		case 1:
 			// Gruvbox Dark
+			strcpy(palette.nvim_colorscheme, "gruvbox-material");
+			palette.nvim_background = "dark";
 			palette.fg = "#ddc7a1";
 			palette.suggestion = "#242729";
 			palette.bg = "#141617";
@@ -68,6 +76,8 @@ int main(){
 			break;
 		case 2:
 			// Gruvbox Light
+			strcpy(palette.nvim_colorscheme, "gruvbox-material");
+			palette.nvim_background = "light";
 			palette.fg = "#654735";
 			palette.suggestion = "#dfcd9f";
 			palette.bg = "#ebdbb2";
@@ -82,6 +92,8 @@ int main(){
 			break;
 		case 3:
 			// Solarized Dark
+			strcpy(palette.nvim_colorscheme, "solarized");
+			palette.nvim_background = "dark";
 			palette.fg = "#839496";
 			palette.suggestion = "#003d4d";
 			palette.bg = "#002b36";
@@ -96,6 +108,8 @@ int main(){
 			break;
 		case 4:
 			// Solarized Light
+			strcpy(palette.nvim_colorscheme, "solarized");
+			palette.nvim_background = "light";
 			palette.fg = "#002b36";
 			palette.suggestion = "#e4decd";
 			palette.bg = "#fdf6e3";
@@ -110,6 +124,8 @@ int main(){
 			break;
 		case 5:
 			// Onedark
+			strcpy(palette.nvim_colorscheme, "onedark");
+			palette.nvim_background = "dark";
 			palette.fg = "#abb2bf";
 			palette.suggestion = "#2c303a";
 			palette.bg = "#16181d";
@@ -124,6 +140,8 @@ int main(){
 			break;
 		case 6:
 			// Tokyonight
+			strcpy(palette.nvim_colorscheme, "tokyonight-storm");
+			palette.nvim_background = "dark";
 			palette.fg = "#a9b1d6";
 			palette.suggestion = "#2a2c3c";
 			palette.bg = "#15161e";
@@ -138,6 +156,8 @@ int main(){
 			break;
 		case 7:
 			// CUSTOM
+			strcpy(palette.nvim_colorscheme, "tokyonight-night");
+			palette.nvim_background = "dark";
 			palette.fg = "#cdd6f4";
 			palette.suggestion = "#1f1f1f";
 			palette.bg = "#0a0a0a";
@@ -267,6 +287,48 @@ int main(){
 
 	fclose(temp_file);
 	fclose(fish_conf_file);
+
+	// ----------------------------------------------------------------NEOVIM COLORSCHEME----------------------------------------------------
+
+	regex_value = regcomp(&regex, "vim.cmd.colorscheme", 0);
+	regex_2_value = regcomp(&regex_2, "vim.opt.background", 0);
+
+	nvim_conf_file = fopen(nvim_conf_filename, "r");
+	temp_file = fopen(temp_filename, "w");
+
+	while( fgets(init_line, LINE_SIZE, nvim_conf_file) ){
+		regex_value = regexec(&regex, init_line, 0,  NULL, 0);
+		regex_2_value = regexec(&regex_2, init_line, 0,  NULL, 0);
+
+		if (regex_value == 0){
+			strncpy(final_line, "vim.cmd.colorscheme \"", sizeof("vim.cmd.colorscheme \""));
+			strncat(final_line, palette.nvim_colorscheme, sizeof(palette.nvim_colorscheme));
+			strncat(final_line, "\"\n", sizeof("\"\n"));
+		} else if (regex_2_value == 0){
+			strncpy(final_line, "vim.opt.background = \"", sizeof("vim.opt.background = \""));
+			strncat(final_line, palette.nvim_background, sizeof(palette.nvim_background));
+			strncat(final_line, "\"\n", sizeof("\"\n"));
+		} else {
+			strncpy(final_line, init_line, sizeof(init_line));
+		}
+		
+		fprintf(temp_file, "%s", final_line);
+	}
+
+	fclose(temp_file);
+	fclose(nvim_conf_file);
+
+	// ----------------------------------------------------------------TEMP -> FINAL----------------------------------------------------------------
+
+	nvim_conf_file = fopen(nvim_conf_filename, "w");
+	temp_file = fopen(temp_filename, "r");
+
+	while( fgets(init_line, LINE_SIZE, temp_file) ){
+		fprintf(nvim_conf_file, "%s", init_line);
+	}
+
+	fclose(temp_file);
+	fclose(nvim_conf_file);
 
 	// ----------------------------------------------------------------CLEANUP & MAKE----------------------------------------------------
 
