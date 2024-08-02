@@ -48,7 +48,7 @@ int main(){
 
 	// ----------------------------------------------------------------INPUT PROMPT-----------------------------------------------------------------
 
-	printf("\nTHEMES\n\n  1. Gruvbox Dark\n  2. Gruvbox Light\n  3. Solarized Dark\n  4. Solarized Light\n  5. Onedark Dark\n  6. Tokyonight Dark\n  7. CUSTOM\n\n");
+	printf("\nTHEMES\n\n  1. Gruvbox Dark\n  2. Gruvbox Light\n  3. Solarized Dark\n  4. Solarized Light\n  5. Onedark Dark\n  6. Tokyonight Dark\n  7. CUSTOM\n  8. CUSTOM 2\n\n");
 	printf("Choose a theme: ");
 	int choice;
 	scanf("%d", &choice);
@@ -170,6 +170,22 @@ int main(){
 			// palette.cyan = "#99f6e4";  
 	        palette.cyan = "#7dcfff";
 			palette.white = "#cdd6f4";  
+			break;
+		case 8:
+			// CUSTOM 2
+			strcpy(palette.nvim_colorscheme, "gruvbox-material");
+			palette.nvim_background = "dark";
+			palette.fg = "#ddc7a1";
+			palette.suggestion = "#242729";
+			palette.bg = "#000000";
+			palette.black = "#282828";
+			palette.red = "#ea6962";
+			palette.green = "#a9b665";
+			palette.yellow = "#6600ff";
+			palette.blue = "#7daea3";
+			palette.magenta = "#d8a657";
+			palette.cyan = "#89b482";
+			palette.white = "#d4be98";
 			break;
 
 		default:

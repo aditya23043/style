@@ -6,9 +6,9 @@
 int main(int argc, char *argv[])
 {
 
-	printf("\nFONTS:\n    1. Victor\n    2. JetBrains\n    3. Iosevka\n    4. Pragmasevka\n    5. Blex\n    6. IBM Plex\n    7. Lekton\n    8. Nanum Gothic Coding\n    9. Ubuntu\n    10. Iosevka SS14\n    11. Fira Code\n    12. Sarasa Gothic\n    13. Recursive Mono\n\nEnter: ");
-	int choice;
-	scanf("%d", &choice);
+	printf("\nFONTS:\n    1. Victor\n    2. JetBrains\n    3. Iosevka\n    4. Pragmasevka\n    5. Blex\n    6. IBM Plex\n    7. Lekton\n    8. Nanum Gothic Coding\n    9. Ubuntu\n    10. Iosevka SS14\n    11. Fira Code\n    12. Sarasa Gothic\n    13. Recursive Mono\n    14. Inconsolata\n    15. Share Tech\n    16. Reddit Mono\n    17. Monoid\n    18. Fira Code\n    19. Fantasque\n    20. Input\n    21. Monoisome\n    22. Martian\n\nEnter: ");
+	long choice;
+	scanf("%ld", &choice);
 
 	char *fontFamily;
 	char *fontStyle;
@@ -20,29 +20,29 @@ int main(int argc, char *argv[])
 		case 1:
 			fontFamily = "VictorMono NFM";
 			fontStyle = "Bold";
-			fontSize = "18";
-			fontSpacing = "0.95";
+			fontSize = "20";
+			fontSpacing = "0.9";
 			break;
 
 		case 2:
 			fontFamily = "JetBrainsMonoNFM";
-			fontStyle = "Bold";
-			fontSize = "16";
+			fontStyle = "Semibold";
+			fontSize = "18";
 			fontSpacing = "0.9";
 			break;
 
 		case 3:
 			fontFamily = "Iosevka NFM";
 			fontStyle = "Regular";
-			fontSize = "26";
-			fontSpacing = "1.0";
+			fontSize = "20";
+			fontSpacing = "0.85";
 			break;
 
 		case 4:
-			fontFamily = "Pragmasevka Nerd Font:";
-			fontStyle = "Regular";
-			fontSize = "24";
-			fontSpacing = "0.9";
+			fontFamily = "Pragmasevka:";
+			fontStyle = "Bold";
+			fontSize = "20";
+			fontSpacing = "1.0";
 			break;
 
 		case 5:
@@ -75,35 +75,98 @@ int main(int argc, char *argv[])
 
 		case 9:
 			fontFamily = "Ubuntu Mono";
-			fontStyle = "Bold";
-			fontSize = "21";
-			fontSpacing = "0.95";
-			break;
-
-		case 10:
-			fontFamily = "Iosevka Term SS14";
-			fontStyle = "Regular";
-			fontSize = "26";
-			fontSpacing = "1.0";
-			break;
-
-		case 11:
-			fontFamily = "Fira Code";
 			fontStyle = "Medium";
 			fontSize = "20";
 			fontSpacing = "0.9";
 			break;
 
+		case 10:
+			fontFamily = "Iosevka Term SS14";
+			fontStyle = "Bold";
+			fontSize = "20";
+			fontSpacing = "0.85";
+			break;
+
+		case 11:
+			fontFamily = "Fira Code";
+			fontStyle = "Medium";
+			fontSize = "16";
+			fontSpacing = "0.9";
+			break;
+
 		case 12:
 			fontFamily = "Sarasa Mono CL";
-			fontStyle = "Regular";
-			fontSize = "24";
-			fontSpacing = "1.0";
+			fontStyle = "Bold";
+			fontSize = "20";
+			fontSpacing = "0.9";
 			break;
 
 		case 13:
 			fontFamily = "RecMonoLinear Nerd Font Mono";
 			fontStyle = "Regular";
+			fontSize = "18";
+			fontSpacing = "0.9";
+			break;
+
+		case 14:
+			fontFamily = "Inconsolata Nerd Font";
+			fontStyle = "Bold";
+			fontSize = "20";
+			fontSpacing = "0.9";
+			break;
+
+		case 15:
+			fontFamily = "ShureTechMono Nerd Font Mono";
+			fontStyle = "Bold";
+			fontSize = "20";
+			fontSpacing = "0.9";
+			break;
+
+		case 16:
+			fontFamily = "Reddit Mono";
+			fontStyle = "Semibold";
+			fontSize = "17";
+			fontSpacing = "0.8";
+			break;
+
+		case 17:
+			fontFamily = "Monoid";
+			fontStyle = "Retina";
+			fontSize = "18";
+			fontSpacing = "0.95";
+			break;
+
+		case 18:
+			fontFamily = "Fira Code";
+			fontStyle = "Retina";
+			fontSize = "20";
+			fontSpacing = "0.9";
+			break;
+
+		case 19:
+			fontFamily = "Fantasque Sans Mono";
+			fontStyle = "Regular";
+			fontSize = "20";
+			fontSpacing = "0.9";
+			break;
+
+		case 20:
+			fontFamily = "Input Mono Narrow";
+			fontStyle = "Regular";
+			fontSize = "18";
+			fontSpacing = "0.9";
+			break;
+
+		case 21:
+			fontFamily = "Monoisome";
+			fontStyle = "Bold";
+			fontSize = "14";
+			fontSpacing = "1.0";
+			break;
+
+		case 22:
+			fontFamily = "MartianMono NFM";
+			fontStyle = "Condensed Medium";
 			fontSize = "18";
 			fontSpacing = "0.9";
 			break;
