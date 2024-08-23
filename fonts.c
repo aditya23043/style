@@ -26,7 +26,9 @@ int main(int argc, char *argv[])
 
 		case 2:
 			fontFamily = "JetBrainsMonoNFM";
-			fontStyle = "Semibold";
+			fontStyle = "Bold";
+			// fontSize = "15";
+			// fontSize = "12";
 			fontSize = "18";
 			fontSpacing = "0.9";
 			break;
@@ -152,7 +154,7 @@ int main(int argc, char *argv[])
 
 		case 20:
 			fontFamily = "Input Mono Narrow";
-			fontStyle = "Regular";
+			fontStyle = "Bold";
 			fontSize = "18";
 			fontSpacing = "0.9";
 			break;
