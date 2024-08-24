@@ -129,7 +129,7 @@ int main(){
 			palette.white = "#839496";
       palette.dwm_sel_fg = "#000000";
       palette.dwm_norm_fg = "#888888";
-      palette.dwm_accent = palette.cyan;
+      palette.dwm_accent = palette.fg;
 			break;
 
     // Solarized Light
@@ -174,10 +174,10 @@ int main(){
 
     // Tokyonight
 		case 6:
-			strncpy(palette.nvim_colorscheme, "tokyonight-storm", sizeof("tokyonight-storm"));
+			strncpy(palette.nvim_colorscheme, "tokyonight-night", sizeof("tokyonight-night"));
 			palette.nvim_background = "dark";
-			palette.fg = "#a9b1d6";
-			palette.suggestion = "#2a2c3c";
+			palette.fg = "#c0caf5";
+			palette.suggestion = "#1f202e";
 			palette.bg = "#15161e";
       palette.black = "#2a2c3c";
       palette.red = "#f7768e";
@@ -189,7 +189,8 @@ int main(){
       palette.white = "#cbd0e6";
       palette.dwm_sel_fg = "#000000";
       palette.dwm_norm_fg = "#888888";
-      palette.dwm_accent = palette.blue;
+      // palette.dwm_accent = "#73daca";
+      palette.dwm_accent = palette.magenta;
 			break;
 
     // Ok colors
@@ -423,22 +424,18 @@ int main(){
 		regex_4_value = regexec(&regex_4, init_line, 0,  NULL, 0);
 
 		if (regex_value == 0){
-      printf("norm_bg");
 			strncpy(final_line, "static const char norm_bg[] = \"", sizeof("static const char norm_bg[] = \""));
 			strncat(final_line, palette.bg, sizeof(palette.bg));
 			strncat(final_line, "\";\n", sizeof("\";\n"));
 		 } else if (regex_2_value == 0){
-      printf("norm_fg");
 			strncpy(final_line, "static const char norm_fg[] = \"", sizeof("static const char norm_fg[] = \""));
 			strncat(final_line, palette.dwm_norm_fg, sizeof(palette.dwm_norm_fg));
 			strncat(final_line, "\";\n", sizeof("\";\n"));
 		 } else if (regex_3_value == 0){
-      printf("sel_fg");
 			strncpy(final_line, "static const char sel_fg[] = \"", sizeof("static const char sel_fg[] = \""));
 			strncat(final_line, palette.dwm_sel_fg, sizeof(palette.dwm_sel_fg));
 			strncat(final_line, "\";\n", sizeof("\";\n"));
 		 } else if (regex_4_value == 0){
-      printf("accent_col");
 			strncpy(final_line, "static const char accent_col[] = \"", sizeof("static const char accent_col[] = \""));
 			strncat(final_line, palette.dwm_accent, sizeof(palette.dwm_accent));
 			strncat(final_line, "\";\n", sizeof("\";\n"));
@@ -480,7 +477,7 @@ int main(){
   FILE *fp;
   char cmd_output[64];
 
-  fp = popen("echo -e 'Yes\nNo' | dmenu -p 'Kill DWM?' -fn 'JetBrainsMono NFM:style=Bold:size=20'", "r");
+  fp = popen("echo -e 'Yes\nNo' | dmenu -p 'Kill DWM?' -fn 'JetBrainsMono NFM:style=Bold:size=28'", "r");
 
   // Error handling
   if (fp == NULL) {
@@ -490,12 +487,12 @@ int main(){
 
   while (fgets(cmd_output, sizeof(cmd_output), fp) != NULL) {
     if(strcmp(cmd_output, "Yes\n") == 0){
-      printf("%s", cmd_output);
+      popen("killall dwm", "r");
     }
   }
+
   pclose(fp);
 
-  popen("killall dwm", "r");
 
 	return 0;
 }
