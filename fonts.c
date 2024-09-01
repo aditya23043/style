@@ -6,7 +6,7 @@
 int main(int argc, char *argv[])
 {
 
-	printf("\nFONTS:\n    1. Victor\n    2. JetBrains\n    3. Iosevka\n    4. Pragmasevka\n    5. Blex\n    6. IBM Plex\n    7. Lekton\n    8. Nanum Gothic Coding\n    9. Ubuntu\n    10. Iosevka SS14\n    11. Fira Code\n    12. Sarasa Gothic\n    13. Recursive Mono\n    14. Inconsolata\n    15. Share Tech\n    16. Reddit Mono\n    17. Monoid\n    18. Fira Code\n    19. Fantasque\n    20. Input\n    21. Monoisome\n    22. Martian\n\nEnter: ");
+	printf("\nFONTS:\n    1. Victor\n    2. JetBrains\n    3. Iosevka\n    4. Pragmasevka\n    5. Blex\n    6. IBM Plex\n    7. Lekton\n    8. Nanum Gothic Coding\n    9. Ubuntu\n    10. Iosevka SS14\n    11. Fira Code\n    12. Sarasa Gothic\n    13. Recursive Mono\n    14. Inconsolata\n    15. Share Tech\n    16. Reddit Mono\n    17. Monoid\n    18. Fira Code\n    19. Fantasque\n    20. Input\n    21. Monoisome\n    22. Martian\n    23. Caskaydia Cove\n\nEnter: ");
 	long choice;
 	scanf("%ld", &choice);
 
@@ -76,9 +76,9 @@ int main(int argc, char *argv[])
 			break;
 
 		case 9:
-			fontFamily = "Ubuntu Mono";
+			fontFamily = "UbuntuMono Nerd Font Mono";
 			fontStyle = "Medium";
-			fontSize = "20";
+			fontSize = "17";
 			fontSpacing = "0.9";
 			break;
 
@@ -171,6 +171,13 @@ int main(int argc, char *argv[])
 			fontStyle = "Condensed Medium";
 			fontSize = "18";
 			fontSpacing = "0.9";
+			break;
+
+		case 23:
+			fontFamily = "CaskaydiaCove NFM";
+			fontStyle = "Medium";
+			fontSize = "17";
+			fontSpacing = "0.85";
 			break;
 
 		default:
