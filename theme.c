@@ -129,7 +129,7 @@ int main(){
 			palette.white = "#839496";
       palette.dwm_sel_fg = "#000000";
       palette.dwm_norm_fg = "#888888";
-      palette.dwm_accent = palette.fg;
+      palette.dwm_accent = palette.cyan;
 			break;
 
     // Solarized Light
@@ -325,7 +325,7 @@ int main(){
 		if (regex_value == 0){
 			strncpy(final_line, "set -U fish_color_autosuggestion \"", sizeof("set -U fish_color_autosuggestion \""));
 			strncat(final_line, palette.suggestion, sizeof(palette.suggestion));
-			strncat(final_line, "\"", sizeof("\""));
+			strncat(final_line, "\"\n", sizeof("\"\n"));
 		} else {
 			strncpy(final_line, init_line, sizeof(init_line));
 		}
@@ -506,7 +506,7 @@ int main(){
 
   while (fgets(cmd_output, sizeof(cmd_output), fp) != NULL) {
     if(strcmp(cmd_output, "Yes\n") == 0){
-      popen("killall dwm", "r");
+      popen("pkill dwm", "r");
     }
   }
 
