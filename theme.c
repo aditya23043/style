@@ -61,7 +61,7 @@ int main(){
 
 	// ----------------------------------------------------------------INPUT PROMPT-----------------------------------------------------------------
 
-	printf("\nTHEMES\n\n  1. Gruvbox Dark\n  2. Gruvbox Light\n  3. Solarized Dark\n  4. Solarized Light\n  5. Onedark Dark\n  6. Tokyonight Dark\n  7. Ok Colors\n\n");
+	printf("\nTHEMES\n\n  1. Gruvbox Dark\n  2. Gruvbox Light\n  3. Solarized Dark\n  4. Solarized Light\n  5. Onedark Dark\n  6. Tokyonight Dark\n  7. Ok Colors Dark\n  8. Ok Colors Light\n\n");
 	printf("Choose a theme: ");
 	int choice;
 	scanf("%d", &choice);
@@ -211,6 +211,25 @@ int main(){
       palette.dwm_sel_fg = "#000000";
       palette.dwm_norm_fg = "#888888";
       palette.dwm_accent = palette.green;
+			break;
+
+		case 8:
+			strncpy(palette.nvim_colorscheme, "okcolors-sharp", sizeof("okcolors-sharp"));
+			palette.nvim_background = "light";
+			palette.fg = "#000000";
+			palette.suggestion = "#e0ded8";
+			palette.bg = "#fefcf4";
+      palette.black = "#212126";
+      palette.red = "#d01a41";
+      palette.green = "#17865d";
+      palette.yellow = "#8b6e09";
+      palette.blue = "#0a7caa";
+      palette.magenta = "#c30d97";
+      palette.cyan = "#0c8285";
+			palette.white = "#e0ded8";  
+      palette.dwm_sel_fg = "#000000";
+      palette.dwm_norm_fg = "#888888";
+      palette.dwm_accent = palette.red;
 			break;
 
 		default:

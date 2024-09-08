@@ -154,7 +154,7 @@ int main(int argc, char *argv[])
 
 		case 20:
 			fontFamily = "Input Mono Narrow";
-			fontStyle = "Bold";
+			fontStyle = "SemiBold";
 			fontSize = "18";
 			fontSpacing = "0.9";
 			break;
