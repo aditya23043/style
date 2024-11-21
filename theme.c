@@ -63,7 +63,7 @@ int main(){
 
     // ----------------------------------------------------------------INPUT PROMPT-----------------------------------------------------------------
 
-    printf("\nTHEMES\n\n  1. Gruvbox Dark\n  2. Gruvbox Light\n  3. Solarized Dark\n  4. Solarized Light\n  5. Onedark Dark\n  6. Tokyonight Dark\n  7. Ok Colors Dark\n  8. Ok Colors Light\n  9. Dracula\n  10. Morhetz's Gruvbox\n  11. Jellybeans\n\n");
+    printf("\nTHEMES\n\n  1. Gruvbox Dark\n  2. Gruvbox Light\n  3. Solarized Dark\n  4. Solarized Light\n  5. Onedark Dark\n  6. Tokyonight Dark\n  7. Ok Colors Dark\n  8. Ok Colors Light\n  9. Dracula\n  10. Morhetz's Gruvbox\n  11. Jellybeans\n  12. Github Dark\n\n");
     printf("Choose a theme: ");
     int choice;
     scanf("%d", &choice);
@@ -289,6 +289,25 @@ int main(){
             palette.dwm_sel_fg = "#000000";
             palette.dwm_norm_fg = "#888888";
             palette.dwm_accent = palette.green;
+            break;
+
+        case 12:
+            strncpy(palette.nvim_colorscheme, "ghdark", sizeof("ghdark"));
+            palette.nvim_background = "dark";
+            palette.fg = "#ecf2f7";
+            palette.suggestion = "#232323";
+            palette.bg = "#000000";
+            palette.black = "#121212";
+            palette.red = "#fa7970";
+            palette.green = "#7ce38b";
+            palette.yellow = "#faa356";
+            palette.blue = "#77bdfb";
+            palette.magenta = "#cea5fb";
+            palette.cyan = "#a2d2fb";
+            palette.white = "#c6cdd5";
+            palette.dwm_sel_fg = "#000000";
+            palette.dwm_norm_fg = "#888888";
+            palette.dwm_accent = palette.red;
             break;
 
         default:
@@ -591,7 +610,7 @@ int main(){
     FILE *fp;
     char cmd_output[64];
 
-    fp = popen("echo -e 'Yes\nNo' | dmenu -p 'Kill DWM?' -fn 'JetBrainsMono NFM:style=Bold:size=28'", "r");
+    fp = popen("echo -e 'Yes\nNo' | dmenu -p 'Kill DWM?' -fn 'JetBrainsMono NFM:style=Bold:size=18'", "r");
 
     // Error handling
     if (fp == NULL) {
