@@ -171,7 +171,7 @@ int main(){
             palette.white = "#c5cad3";  
             palette.dwm_sel_fg = "#000000";
             palette.dwm_norm_fg = "#888888";
-            palette.dwm_accent = palette.red;
+            palette.dwm_accent = palette.cyan;
             break;
 
             // Tokyonight
@@ -313,16 +313,18 @@ int main(){
         case 13:
             strncpy(palette.nvim_colorscheme, "iceberg", sizeof("iceberg"));
             palette.nvim_background = "dark";
-            palette.fg = "##c6c8d1";
-            palette.suggestion = "#232323";
-            palette.bg = "#161821";
-            palette.black = "#000000";
+            /* palette.fg = "#c6c8d1"; */
+            palette.fg = "#c7c7c7";
+            palette.suggestion = "#33384d";
+            /* palette.bg = "#161821"; */
+            palette.bg = "#000000";
+            palette.black = "#33384d";
             palette.red = "#e27878";
-            palette.green = "##b4be82";
-            palette.yellow = "##e4aa80";
-            palette.blue = "##84a0c6";
+            palette.green = "#b4be82";
+            palette.yellow = "#e4aa80";
+            palette.blue = "#84a0c6";
             palette.magenta = "#a093c7";
-            palette.cyan = "##89b8c2";
+            palette.cyan = "#89b8c2";
             palette.white = "#c6c8d1";
             palette.dwm_sel_fg = "#161821";
             palette.dwm_norm_fg = "#888888";
@@ -629,7 +631,7 @@ int main(){
     FILE *fp;
     char cmd_output[64];
 
-    fp = popen("echo -e 'Yes\nNo' | dmenu -p 'Kill DWM?' -fn 'JetBrainsMono NFM:style=Bold:size=18'", "r");
+    fp = popen("echo -e 'Yes\nNo' | dmenu -p 'Kill DWM?' -fn 'JetBrainsMono NFM:style=Bold:size=8'", "r");
 
     // Error handling
     if (fp == NULL) {

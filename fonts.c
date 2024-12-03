@@ -109,15 +109,15 @@ int main(int argc, char *argv[])
 
         case 12:
             fontFamily = "RecMonoLinear Nerd Font Mono";
-            fontStyle = "Regular";
-            fontSize = "18";
-            fontSpacing = "0.9";
+            fontStyle = "Bold";
+            fontSize = "14";
+            fontSpacing = "1.0";
             break;
 
         case 13:
             fontFamily = "Inconsolata Nerd Font";
-            fontStyle = "Regular";
-            fontSize = "20";
+            fontStyle = "Bold";
+            fontSize = "15";
             fontSpacing = "0.95";
             break;
 
@@ -151,9 +151,9 @@ int main(int argc, char *argv[])
 
         case 18:
             fontFamily = "Input Mono Narrow";
-            fontStyle = "Regular";
-            fontSize = "18";
-            fontSpacing = "0.9";
+            fontStyle = "Bold";
+            fontSize = "13";
+            fontSpacing = "1.0";
             break;
 
         case 19:
