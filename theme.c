@@ -176,7 +176,7 @@ int main(){
 
             // Tokyonight
         case 6:
-            strncpy(palette.nvim_colorscheme, "tokyonight-night", sizeof("tokyonight-night"));
+            strncpy(palette.nvim_colorscheme, "tokyonight", sizeof("tokyonight"));
             palette.nvim_background = "dark";
             palette.fg = "#c0caf5";
             palette.suggestion = "#1f202e";

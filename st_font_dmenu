@@ -1,0 +1,12 @@
+#!/bin/bash
+
+font_old="$(cat /home/adi/.config/st/config.h | sed -n 8p | cut -d \" -f2 | cut -d: -f1)"
+font_new="$(fc-list | cut -d: -f2 | cut -d, -f2 | sed 's/^ //g' | uniq | dmenu -fn 'JetBrainsMono NFM:size=16')"
+
+if [ -n "$font_new" ]; then
+	echo "Old Font: $font_old"
+	echo "New Font: $font_new"
+	sed -i "8s/$font_old/$font_new/" ~/.config/st/config.h
+	cd ~/.config/st && sudo make clean install && cd
+fi
+
