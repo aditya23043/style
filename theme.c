@@ -63,7 +63,7 @@ int main(){
 
     // ----------------------------------------------------------------INPUT PROMPT-----------------------------------------------------------------
 
-    printf("\nTHEMES\n\n  1. Gruvbox Dark\n  2. Gruvbox Light\n  3. Solarized Dark\n  4. Solarized Light\n  5. Onedark Dark\n  6. Tokyonight Dark\n  7. Ok Colors Dark\n  8. Ok Colors Light\n  9. Dracula\n  10. Morhetz's Gruvbox\n  11. Jellybeans\n  12. Github Dark\n  13. Iceberg\n\n");
+    printf("\nTHEMES\n\n  1. Gruvbox Dark\n  2. Gruvbox Light\n  3. Solarized Dark\n  4. Solarized Light\n  5. Onedark Dark\n  6. Tokyonight Dark\n  7. Ok Colors Dark\n  8. Ok Colors Light\n  9. Dracula\n  10. Morhetz's Gruvbox\n  11. Jellybeans\n  12. Github Dark\n  13. Iceberg\n  14. Moonfly\n  15. Quiet\n  16. Catppuccin\n\n");
     printf("Choose a theme: ");
     int choice;
     scanf("%d", &choice);
@@ -136,11 +136,14 @@ int main(){
 
             // Solarized Light
         case 4:
-            strncpy(palette.nvim_colorscheme, "solarized", sizeof("solarized"));
+            strncpy(palette.nvim_colorscheme, "NeoSolarized", sizeof("NeoSolarized"));
             palette.nvim_background = "light";
-            palette.fg = "#002b36";
-            palette.suggestion = "#e4decd";
-            palette.bg = "#fdf6e3";
+            /* palette.fg = "#002b36"; */
+            palette.fg = "#576d75";
+            /* palette.suggestion = "#dbd1bd"; */
+            palette.suggestion = "#e6d8b3";
+            /* palette.bg = "#fdf5e3"; */
+            palette.bg = "#fcf0cf";
             palette.black = "#282828";
             palette.red = "#dc322f";
             palette.green = "#859900";
@@ -316,8 +319,8 @@ int main(){
             /* palette.fg = "#c6c8d1"; */
             palette.fg = "#c7c7c7";
             palette.suggestion = "#33384d";
-            /* palette.bg = "#161821"; */
-            palette.bg = "#000000";
+            palette.bg = "#161821";
+            /* palette.bg = "#000000"; */
             palette.black = "#33384d";
             palette.red = "#e27878";
             palette.green = "#b4be82";
@@ -329,6 +332,67 @@ int main(){
             palette.dwm_sel_fg = "#161821";
             palette.dwm_norm_fg = "#888888";
             palette.dwm_accent = palette.blue;
+            break;
+
+        case 14:
+            strncpy(palette.nvim_colorscheme, "moonfly", sizeof("moonfly"));
+            palette.nvim_background = "dark";
+            palette.fg = "#c6c6c6";
+            palette.suggestion = "#282828";
+            palette.bg = "#080808";
+            palette.black = "#282828";
+            palette.red = "#ff5454";
+            palette.green = "#8cc85f";
+            palette.yellow = "#e3c78a";
+            palette.blue = "#80a0ff";
+            palette.magenta = "#d183e8";
+            palette.cyan = "#79dac8";
+            palette.white = "#a1aab8";
+            palette.dwm_sel_fg = "#000000";
+            palette.dwm_norm_fg = "#888888";
+            palette.dwm_accent = palette.magenta;
+            break;
+
+        case 15:
+            strncpy(palette.nvim_colorscheme, "quiet", sizeof("quiet"));
+            palette.nvim_background = "dark";
+            /* palette.fg = "#c6c8d1"; */
+            palette.fg = "#c7c7c7";
+            palette.suggestion = "#232323";
+            /* palette.bg = "#161821"; */
+            palette.bg = "#000000";
+            palette.black = "#33384d";
+            palette.red = "#c7c7c7";
+            palette.green = "#c7c7c7";
+            palette.yellow = "#c7c7c7";
+            palette.blue = "#c7c7c7";
+            palette.magenta = "#c7c7c7";
+            palette.cyan = "#c7c7c7";
+            palette.white = "#c7c7c7";
+            palette.dwm_sel_fg = "#161821";
+            palette.dwm_norm_fg = "#888888";
+            palette.dwm_accent = palette.blue;
+            break;
+
+        case 16:
+            strncpy(palette.nvim_colorscheme, "catppuccin_mocha", sizeof("catppuccin_mocha"));
+            palette.nvim_background = "dark";
+            /* palette.fg = "#c6c8d1"; */
+            palette.fg = "#cdd6f4";
+            palette.suggestion = "#32324d";
+            /* palette.bg = "#161821"; */
+            palette.bg = "#1e1e2e";
+            palette.black = "#28283e";
+            palette.red = "#F38BA8";
+            palette.green = "#A6E3A1";
+            palette.yellow = "#F9E2AF";
+            palette.blue = "#89B4FA";
+            palette.magenta = "#CBA6F7";
+            palette.cyan = "#94E2D5";
+            palette.white = "#a6adc8";
+            palette.dwm_sel_fg = "#000000";
+            palette.dwm_norm_fg = "#888888";
+            palette.dwm_accent = palette.magenta;
             break;
 
         default:
@@ -528,17 +592,23 @@ int main(){
     // ----------------------------------------------------------------VIM COLORSCHEME------------------------------------------------------------
 
     regex_value = regcomp(&regex, "^colorscheme", 0);
+    regex_2_value = regcomp(&regex_2, "^set bg=", 0);
 
     vim_conf_file = fopen(vim_conf_filename, "r");
     temp_file = fopen(temp_filename, "w");
 
     while( fgets(init_line, LINE_SIZE, vim_conf_file) ){
         regex_value = regexec(&regex, init_line, 0,  NULL, 0);
+        regex_2_value = regexec(&regex_2, init_line, 0,  NULL, 0);
 
         if (regex_value == 0){
             strncpy(final_line, "colorscheme " , sizeof("colorscheme "));
             strncat(final_line, palette.nvim_colorscheme, sizeof(palette.nvim_colorscheme));
             strncat(final_line, "\n", sizeof("\n"));
+        } else if (regex_2_value == 0){
+            strncpy(final_line, "set bg=", sizeof("set bg="));
+            strncat(final_line, palette.nvim_background, sizeof(palette.nvim_background));
+            strncat(final_line, "\"\n", sizeof("\"\n"));
         } else {
             strncpy(final_line, init_line, sizeof(init_line));
         }

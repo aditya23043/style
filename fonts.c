@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
         choice = strtol(argv[1], NULL, 10);
         printf("%ld", choice);
     } else {
-        printf("\nFONTS:\n    0. Install All Listed Fonts\n    1. Victor\n    2. JetBrains\n    3. Iosevka\n    4. Pragmasevka\n    5. Blex\n    6. IBM Plex\n    7. Lekton\n    8. Nanum Gothic Coding\n    9. Ubuntu\n    10. Fira Code\n    11. Sarasa Gothic\n    12. Recursive Mono\n    13. Inconsolata\n    14. Share Tech\n    15. Reddit Mono\n    16. Monoid\n    17. Fantasque\n    18. Input\n    19. Monoisome\n    20. Martian\n    21. Caskaydia Cove\n    22. SF Mono\n    23. Hack\n    24. ZedMono\n    25. CommitMono\n    26. SauceCodePro\n    27. SpaceMono\n    28. Meslo LGL DZ\n    29. Meslo LGS DZ\n    30. Agave\n\nEnter: ");
+        printf("\nFONTS:\n    0. Install All Listed Fonts\n    1. Victor\n    2. JetBrains\n    3. Iosevka\n    4. Pragmasevka\n    5. Blex\n    6. IBM Plex\n    7. Lekton\n    8. Nanum Gothic Coding\n    9. Ubuntu\n    10. Fira Code\n    11. Sarasa Gothic\n    12. Recursive Mono\n    13. Inconsolata\n    14. Share Tech\n    15. Reddit Mono\n    16. Monoid\n    17. Fantasque\n    18. Input\n    19. Monoisome\n    20. Martian\n    21. Caskaydia Cove\n    22. SF Mono\n    23. Hack\n    24. ZedMono\n    25. CommitMono\n    26. SauceCodePro\n    27. SpaceMono\n    28. Meslo LGL DZ\n    29. Meslo LGS DZ\n    30. Agave\n    31. Geisto\n\nEnter: ");
         scanf("%ld", &choice);
     }
 
@@ -181,7 +181,7 @@ int main(int argc, char *argv[])
             fontFamily = "SF Mono";
             fontStyle = "Bold";
             fontSize = "13";
-            fontSpacing = "0.85";
+            fontSpacing = "0.9";
             break;
 
         case 23:
@@ -229,12 +229,19 @@ int main(int argc, char *argv[])
         case 29:
             fontFamily = "MesloLGSDZ Nerd Font Mono";
             fontStyle = "Bold";
-            fontSize = "15";
-            fontSpacing = "0.9";
+            fontSize = "14";
+            fontSpacing = "1.0";
             break;
 
         case 30:
             fontFamily = "Agave Nerd Font Mono";
+            fontStyle = "Bold";
+            fontSize = "15";
+            fontSpacing = "1.0";
+            break;
+
+        case 31:
+            fontFamily = "GeistMono NFM";
             fontStyle = "Bold";
             fontSize = "15";
             fontSpacing = "1.0";
