@@ -17,6 +17,11 @@ const int LINE_SIZE = 1024;
 const char *temp_file_name =
     "theme_switcher_temp"; // put in $HOME/.cache/ directory
 
+struct Themes_arr {
+  struct Theme *theme_arr; // array containing all the themes
+  int size;                // number of themes
+};
+
 struct Theme {
 
   char *theme_name;
@@ -38,15 +43,15 @@ struct Theme {
   char *white;
 };
 
-struct Theme *initialize_themes() {
+struct Themes_arr initialize_themes() {
 
-  struct Theme gruvbox = {
+  const struct Theme gruvbox = {
       "Gruvbox", "gruvbox", "dark",    "#282828", "#ebdbb2",
       "#484848", "#484848", "#fb4934", "#b8bb26", "#fabd2f",
       "#83a598", "#d3869b", "#8ec07c", "#fbf1c7",
   };
 
-  struct Theme gruvbox_material_dark = {
+  const struct Theme gruvbox_material_dark = {
       "Gruvbox Material Dark",
       "gruvbox-material",
       "dark",
@@ -63,7 +68,7 @@ struct Theme *initialize_themes() {
       "#d4be98",
   };
 
-  struct Theme gruvbox_material_light = {
+  const struct Theme gruvbox_material_light = {
       "Gruvbox Material Light",
       "gruvbox-material",
       "light",
@@ -80,24 +85,36 @@ struct Theme *initialize_themes() {
       "#dbddbf",
   };
 
-  struct Theme solarized_dark = {
+  const struct Theme solarized_dark = {
       "Solarized Dark", "NeoSolarized", "dark",    "#839496", "#003d4d",
       "#002b36",        "#282828",      "#dc322f", "#859900", "#b58900",
       "#268bd2",        "#d33682",      "#2aa198", "#839496",
   };
 
-  struct Theme solarized_light = {
+  const struct Theme solarized_light = {
       "Solarized Light", "NeoSolarized", "light",   "#fcf0cf", "#576d75",
       "#e6d8b3",         "#282828",      "#dc322f", "#859900", "#b58900",
       "#268bd2",         "#d33682",      "#2aa198", "#839496",
   };
 
-  struct Theme theme_presets[] = {
+  struct Theme something[] = {
       gruvbox,        gruvbox_material_dark, gruvbox_material_light,
       solarized_dark, solarized_light,
   };
 
-  return theme_presets;
+  struct Theme *theme_presets_ptr =
+      malloc(sizeof(struct Theme) * sizeof(something) / sizeof(something[0]));
+
+  for (int i = 0; i < sizeof(something) / sizeof(something[0]); i++) {
+    theme_presets_ptr[i] = something[i];
+  }
+
+  struct Themes_arr final_themes_array = {
+      theme_presets_ptr,
+      sizeof(something) / sizeof(something[0]),
+  };
+
+  return final_themes_array;
 }
 
 bool vim_exists() {
@@ -185,18 +202,24 @@ void vim_theme_change(char *colorscheme_name, char *background) {
 
 struct Theme input_palette() {
 
-  struct Theme *themes = initialize_themes();
+  struct Themes_arr themes = initialize_themes();
 
-  printf("Select theme:\n");
-  for (int i = 0; i < sizeof(themes) / sizeof(themes[0]); i++) {
-    printf("  %d. %s\n", i + 1, themes[i].theme_name);
+  printf("\nSelect theme:\n");
+  for (int i = 0; i < themes.size; i++) {
+    printf("  %d. %s\n", i + 1, themes.theme_arr[i].theme_name);
   }
-  printf("\n\n");
+
+  printf("\n  Choose >> ");
 
   int selected_theme_index;
   scanf("%d", &selected_theme_index);
 
-  struct Theme selected_theme = themes[selected_theme_index - 1];
+  if (selected_theme_index > themes.size || selected_theme_index < 0) {
+    printf("Theme not found!\n");
+    exit(-1);
+  }
+
+  struct Theme selected_theme = themes.theme_arr[selected_theme_index - 1];
 
   return selected_theme;
 }
