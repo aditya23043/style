@@ -1,3 +1,10 @@
+# Demo
+
+
+https://github.com/user-attachments/assets/05cbf785-9668-4111-998b-9a83eb55ceeb
+
+
+
 # Purpose
 - Used in order to efficiently synchronize theming and fonts across all my development tools like...
     - vim
