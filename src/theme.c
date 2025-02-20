@@ -157,8 +157,6 @@ void vim_theme_change(char *colorscheme_name, char *background) {
     char init_line[LINE_SIZE];
     char final_line[LINE_SIZE];
 
-    fgets(init_line, LINE_SIZE, vim_config_file);
-
     while (fgets(init_line, LINE_SIZE, vim_config_file)) {
       int regex_value = regexec(&regex, init_line, 0, NULL, 0);
       int regex_value_2 = regexec(&regex2, init_line, 0, NULL, 0);
