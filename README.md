@@ -51,3 +51,5 @@ OR
 ## Font Switcher
 - It is almost done as of `2025-02-20 23:05`
 - I just have to add all the fonts I use in the `init_fonts()` function and also I might have to add some error checking so that it can be run on anyone's system without failing
+- Modified the code to include a mappings guide and also added all the fonts I could
+- Done as of: 2025-02-20 23:57

@@ -1,4 +1,5 @@
 #include <errno.h>
+#include <locale.h>
 #include <ncurses.h>
 #include <regex.h>
 #include <stdio.h>
@@ -8,7 +9,7 @@
 
 char st_config_filename[FILENAME_MAX];
 char temp_filename[FILENAME_MAX];
-const int NUM_FONTS = 3;
+int NUM_FONTS = 0;
 const int LINE_SIZE = 1024;
 
 struct Font {
@@ -20,13 +21,41 @@ struct Font {
 
 struct Font *init_fonts() {
 
-    struct Font *fonts_ptr = malloc(sizeof(struct Font) * NUM_FONTS);
-
     struct Font fonts_arr[] = {
         {"JetBrains", "JetBrainsMonoNFM", "Bold", 14},
-        {"Victor", "VictorMono NFP", "Bold", 18},
+        {"Cascadia", "CascadiaCode NF", "Bold", 14},
+        {"SF Mono", "SF Mono", "Bold", 12},
+        {"Meslo", "MesloLGSDZ Nerd Font Mono", "Bold", 13},
+        {"Agave", "Agave Nerd Font Mono", "Regular", 16},
+        {"Fantasque", "Fantasque Sans Mono", "Bold", 15},
+        {"Inconsolata", "Inconsolata Nerd Font", "Bold", 15},
+        {"Rec Mono", "RecMonoLinear Nerd Font Mono", "Bold", 14},
+        {"Hack", "Hack Nerd Font Mono", "Bold", 13},
+        {"Fira", "Fira Mono", "Medium", 13},
         {"Lekton", "Lekton Nerd Font Mono", "Bold", 21},
+        {"Pragmasevka", "Pragmasevka Nerd Font", "Regular", 20},
+        {"Sauce Code Pro", "SauceCodePro Nerd Font Mono", "Bold", 14},
+        {"Space Mono", "SpaceMono Nerd Font Mono", "Bold", 14},
+        {"Blex", "BlexMono NFM", "Bold", 18},
+        {"IBM Plex", "IBM Plex Mono", "Regular", 18},
+        {"Zed Mono", "ZedMono Nerd Font Mono", "Bold", 14},
+        {"Commit Mono", "CommitMono Nerd Font Mono", "Bold", 14},
+        {"Nanum", "Nanum Gothic Coding", "Bold", 17},
+        {"Ubuntu", "Ubuntu Mono", "SemiBold", 19},
+        {"Sarasa", "Sarasa Mono CL", "Bold", 19},
+        {"ShureTech", "ShureTechMono Nerd Font Mono", "Regular", 18},
+        {"Reddit", "Reddit Mono", "Medium", 17},
+        {"Monoid", "Monoid", "Retina", 18},
+        {"Input", "Input Mono Narrow", "Bold", 13},
+        {"Geist", "GeistMono NFM", "Bold", 15},
+        {"Monoisome", "Monoisome", "Bold", 14},
+        {"Martian", "MartianMono NFM", "Condensed Regular", 17},
+        {"Victor", "VictorMono NFP", "Bold", 18},
     };
+
+    NUM_FONTS = sizeof(fonts_arr) / sizeof(fonts_arr[0]);
+
+    struct Font *fonts_ptr = malloc(sizeof(struct Font) * NUM_FONTS);
 
     for (int i = 0; i < NUM_FONTS; i++) {
         fonts_ptr[i] = fonts_arr[i];
@@ -59,6 +88,16 @@ struct Font select_font() {
             refresh();
         }
 
+        printw("\n");
+        printw("  ┌────────MAPPINGS─────────┐\n");
+        printw("  │                         │\n");
+        printw("  │ ↳ Down            j     │\n");
+        printw("  │ ↳ Up              k     │\n");
+        printw("  │ ↳ Select          Ret   │\n");
+        printw("  │ ↳ Quit            q     │\n");
+        printw("  │                         │\n");
+        printw("  └─────────────────────────┘\n");
+
         char c = getch();
 
         // handle user input
@@ -74,7 +113,14 @@ struct Font select_font() {
             } else {
                 chosen--;
             }
-        } else if (c == 'q' || c == '\n') {
+        } else if (c == 'q') {
+            // safely quit
+            clear();
+            endwin();
+            curs_set(1);
+            free(fonts_arr);
+            exit(0);
+        } else if (c == '\n') {
             break;
         }
 
@@ -116,6 +162,8 @@ char *fgets_semicolon(int MAX_NUM_CHARS, FILE *file) {
 }
 
 int main(int argc, char **argv) {
+
+    setlocale(LC_ALL, "");
 
     // st terminal's configuration file
     snprintf(st_config_filename, FILENAME_MAX, "%s/.config/st/config.h",
@@ -168,6 +216,7 @@ int main(int argc, char **argv) {
         // file
         if (temp_file == NULL) {
             printf("Unable to open temporary file!\n");
+            free(buffer);
             exit(-1);
         }
         fprintf(temp_file, "%s", final_line);
