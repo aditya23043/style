@@ -1,5 +1,6 @@
 # Demo
 
+<img src="./imgs/2025-02-21_11-43.png">
 
 https://github.com/user-attachments/assets/10a0abfe-3de8-46a6-a86f-0e45a4d28791
 
@@ -53,3 +54,4 @@ OR
 - I just have to add all the fonts I use in the `init_fonts()` function and also I might have to add some error checking so that it can be run on anyone's system without failing
 - Modified the code to include a mappings guide and also added all the fonts I could
 - Done as of: 2025-02-20 23:57
+> In order to make the extended ascii chars work, I needed to add the locale header file and set LC_ALL
