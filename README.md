@@ -8,6 +8,12 @@ https://github.com/user-attachments/assets/10a0abfe-3de8-46a6-a86f-0e45a4d28791
 ## Theme
 ![2025-06-06_11-59](https://github.com/user-attachments/assets/92f05c5b-5ab7-447b-b175-ab03c6194598)
 
+
+https://github.com/user-attachments/assets/2fe16ab4-be1a-4052-9c7c-9e908c8d8a26
+
+
+
+
 # Purpose
 
 - Used in order to efficiently synchronize theming and fonts across all my development tools like...
