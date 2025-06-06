@@ -1,11 +1,11 @@
 # Demo
 
+## Font
 <img src="./imgs/2025-02-21_11-43.png">
-
 https://github.com/user-attachments/assets/10a0abfe-3de8-46a6-a86f-0e45a4d28791
 
-
-
+## Theme
+![2025-06-06_11-59](https://github.com/user-attachments/assets/92f05c5b-5ab7-447b-b175-ab03c6194598)
 
 # Purpose
 - Used in order to efficiently synchronize theming and fonts across all my development tools like...
