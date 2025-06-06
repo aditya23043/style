@@ -2,6 +2,8 @@
 
 #define ST_CONFIG_FILE "/home/adi/.config/st/config.h"
 #define VIM_CONFIG_FILE "/home/adi/.vimrc"
+#define FISH_CONFIG_FILE "/home/adi/.config/fish/config.fish"
+
 #define TEMP_FILE "/home/adi/.config/st/style.tmp"
 
 #define ST_BUILD_CMD "cd /home/adi/.config/st; sudo make clean install; cd"
@@ -65,15 +67,15 @@ const struct Theme gruvbox_material_light = {
 };
 
 const struct Theme solarized_dark = {
-    "Solarized Dark", "NeoSolarized", "dark",    "#003d4d", "#839496",
-    "#002b36",        "#282828",      "#dc322f", "#859900", "#b58900",
-    "#268bd2",        "#d33682",      "#2aa198", "#839496",
+    "Solarized Dark", "solarized8", "dark",    "#003d4d", "#839496",
+    "#002b36",        "#282828",    "#dc322f", "#859900", "#b58900",
+    "#268bd2",        "#d33682",    "#2aa198", "#839496",
 };
 
 const struct Theme solarized_light = {
-    "Solarized Light", "NeoSolarized", "light",   "#fcf0cf", "#576d75",
-    "#e6d8b3",         "#282828",      "#dc322f", "#859900", "#b58900",
-    "#268bd2",         "#d33682",      "#2aa198", "#839496",
+    "Solarized Light", "solarized8", "light",   "#fcf0cf", "#576d75",
+    "#e6d8b3",         "#282828",    "#dc322f", "#859900", "#b58900",
+    "#268bd2",         "#d33682",    "#2aa198", "#839496",
 };
 
 const struct Theme onedark = {
@@ -173,3 +175,4 @@ struct Theme themes[] = {
 
 int patch_st(int index);
 int patch_vim(int index);
+int patch_fish(int index);
