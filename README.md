@@ -10,8 +10,6 @@
   - gtk
   - wallpaper
 
-> NOTE: This project is still work in progress
-
 # Dependencies
 
 - C compiler; like gcc / clang / etc.
