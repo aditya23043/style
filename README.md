@@ -46,8 +46,7 @@ git clone https://github/aditya23043/style
 
 ```
 cd style
-make font
-make theme
+make
 ```
 
 - Run the suitable binary
