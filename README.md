@@ -1,19 +1,3 @@
-# Demo
-
-## Font
-<img src="./imgs/2025-02-21_11-43.png">
-
-https://github.com/user-attachments/assets/10a0abfe-3de8-46a6-a86f-0e45a4d28791
-
-## Theme
-![2025-06-06_11-59](https://github.com/user-attachments/assets/92f05c5b-5ab7-447b-b175-ab03c6194598)
-
-
-https://github.com/user-attachments/assets/2fe16ab4-be1a-4052-9c7c-9e908c8d8a26
-
-
-
-
 # Purpose
 
 - Used in order to efficiently synchronize theming and fonts across all my development tools like...
@@ -77,3 +61,20 @@ OR
 - Modified the code to include a mappings guide and also added all the fonts I could
 - Done as of: 2025-02-20 23:57
   > In order to make the extended ascii chars work, I needed to add the locale header file and set LC_ALL
+
+# Demo
+
+## Font
+<img src="./imgs/2025-02-21_11-43.png">
+
+https://github.com/user-attachments/assets/10a0abfe-3de8-46a6-a86f-0e45a4d28791
+
+## Theme
+![2025-06-06_11-59](https://github.com/user-attachments/assets/92f05c5b-5ab7-447b-b175-ab03c6194598)
+
+
+https://github.com/user-attachments/assets/2fe16ab4-be1a-4052-9c7c-9e908c8d8a26
+
+
+
+
