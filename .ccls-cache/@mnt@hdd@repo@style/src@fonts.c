@@ -22,6 +22,7 @@ struct Font {
 struct Font *init_fonts() {
 
     struct Font fonts_arr[] = {
+        { "Commit Mono", "CommitMono Nerd Font", "SemiBold", 18 },
         {"DejaVu", "DejaVu Sans Mono", "Bold", 13},
         {"Cascadia", "CascadiaCode NF", "SemiBold", 13},
         {"JetBrains", "JetBrainsMonoNFM", "Bold", 14},
@@ -49,11 +50,15 @@ struct Font *init_fonts() {
         {"ShureTech", "ShureTechMono Nerd Font Mono", "Regular", 18},
         {"Reddit", "Reddit Mono", "Medium", 17},
         {"Monoid", "Monoid", "Retina", 18},
-        {"Input", "Input Mono Narrow", "Regular", 15},
+        {"Input", "Input Mono Narrow", "Regular", 14},
         {"Geist", "GeistMono NFM", "Bold", 15},
         {"Monoisome", "Monoisome", "Bold", 14},
         {"Martian", "MartianMono NFM", "Condensed Regular", 17},
         {"Victor", "VictorMono NFP", "Bold", 18},
+        { "Monaco", "Liga Monaco", "Medium", 18 },
+        { "Code New Roman", "CodeNewRoman Nerd Font", "SemiBold", 18 },
+        { "Envy Code R", "EnvyCodeR Nerd Font", "SemiBold", 18 },
+        { "iMWritingMono", "iMWritingMono Nerd Font", "Medium", 18 },
     };
 
     NUM_FONTS = sizeof(fonts_arr) / sizeof(fonts_arr[0]);

@@ -303,7 +303,7 @@ int patch_dwm(int index) {
                    accent_col[0] == '\0') {
             snprintf(accent_col, sizeof(accent_col),
                      "static const char accent_col[] = \"%s\";\n",
-                     themes[index].blue);
+                     themes[index].dwm_accent);
             fputs(accent_col, temp_file);
         } else if (strstr(buffer, "border[]") != NULL && border[0] == '\0') {
             snprintf(border, sizeof(border),
