@@ -59,13 +59,13 @@ int main(void) {
 
             while ((ch2 = getch()) != '\n') {
                 if (ch2 == KEY_BACKSPACE || ch2 == KEY_DC || ch2 == 127) {
-					str_match.data[--str_match.index] = '\0';
-					delch();
+                    str_match.data[--str_match.index] = '\0';
+                    delch();
                 } else {
-					addch(ch2);
-					str_match.data[str_match.index++] = ch2;
-					str_match.data[str_match.index] = '\0';
-				}
+                    addch(ch2);
+                    str_match.data[str_match.index++] = ch2;
+                    str_match.data[str_match.index] = '\0';
+                }
             }
 
             for (int i = 0; i < num_themes; i++) {
@@ -194,14 +194,14 @@ int patch_vim(int index) {
     char bg[128];
     char indentline[128];
 
-    snprintf(colorscheme, sizeof(colorscheme), "colorscheme %s\n",
+    snprintf(colorscheme, sizeof(colorscheme), "colo %s\n",
              themes[index].vim_name);
     snprintf(bg, sizeof(bg), "set bg=%s\n", themes[index].vim_bg);
     snprintf(indentline, sizeof(indentline),
              "let g:indentLine_color_gui = \"%s\"\n", themes[index].suggestion);
 
     while (fgets(buffer, BUFFER_SIZE, config_file) != NULL) {
-        if (strstr(buffer, "colorscheme") != NULL) {
+        if (strstr(buffer, "colo ") != NULL) {
             fputs(colorscheme, temp_file);
         } else if (strstr(buffer, "set bg=") != NULL) {
             fputs(bg, temp_file);
